@@ -1,11 +1,10 @@
 - set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
-- set_fact: a_alias={{lookup('env','CLC_ACCT_ALIAS')}}
 
 - name: register product
   delegate_to: 127.0.0.1
   ignore_errors: yes
   uri:
-    url: https://onramp-dev.uswest.appfog.ctl.io/api/PlatformSubscriptions
+    url: http://onramp-dev.uswest.appfog.ctl.io/api/PlatformSubscriptions
     HEADER_Content-Type: "application/json"
     method: POST
     body: '{
@@ -15,13 +14,11 @@
       "bearerToken": {{ b_token }},
       "startTime": "{{ start_time }}",
       "endTime": "{{ ansible_date_time.iso8601 }}",
-      "success": "{{ i_status }}",
+      "success": {{ i_success }},
       "errorMessage": "{{ i_message }}",
       "dataCenter": "{{ clc_datacenter }}",
       "servers": {{ groups.all }},
-      "executionId": "{{ rnr_execution_id }}",
-      "userAlias": "{{ a_alias }}",
-      "isActive": true
+      "executionId": "{{ rnr_execution_id }}"
     }'
     body_format: json
     status_code: 200, 201
