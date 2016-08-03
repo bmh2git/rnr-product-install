@@ -3,6 +3,10 @@
       shell: uname -a
       register: ip_out
 
+    - name: pause a bit
+      pause:
+        seconds: 5
+        
     - name: output
       debug: var=ip_out
 
