@@ -1,0 +1,31 @@
+- set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
+- set_fact: a_alias={{lookup('env','CLC_ACCT_ALIAS')}}
+
+- name: register product
+  delegate_to: 127.0.0.1
+  ignore_errors: yes
+  uri:
+    url: https://onramp-dev.uswest.appfog.ctl.io/api/PlatformSubscriptions
+    HEADER_Content-Type: "application/json"
+    method: POST
+    body: '{
+      "providerAlias": "{{ providerAlias }}",
+      "productId": "{{ productId }}",
+      "name": "{{ name }}",
+      "bearerToken": {{ b_token }},
+      "startTime": "{{ start_time }}",
+      "endTime": "{{ ansible_date_time.iso8601 }}",
+      "success": "{{ i_status }}",
+      "errorMessage": "{{ i_message }}",
+      "dataCenter": "{{ clc_datacenter }}",
+      "servers": {{ groups.all }},
+      "executionId": "{{ rnr_execution_id }}",
+      "userAlias": "{{ a_alias }}",
+      "isActive": true
+    }'
+    body_format: json
+    status_code: 200, 201
+  register: reg_out
+
+- name: Registration Results
+  debug: var=reg_out

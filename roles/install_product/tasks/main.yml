@@ -1,0 +1,13 @@
+- block:
+    - name: install product
+      shell: uname -a
+      register: ip_out
+
+    - name: output
+      debug: var=ip_out
+
+    - name: set status to a tmp val
+      set_fact: i_status="true"
+  rescue:
+    - set_fact: i_status="false"
+    - set_fact: i_message="installation failed"
