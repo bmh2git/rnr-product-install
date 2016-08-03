@@ -14,7 +14,7 @@
       "bearerToken": {{ b_token }},
       "startTime": "{{ start_time }}",
       "endTime": "{{ ansible_date_time.iso8601 }}",
-      "success": {{ i_success }},
+      "success": {{ i_success|lower }},
       "errorMessage": "{{ i_message }}",
       "dataCenter": "{{ clc_datacenter }}",
       "servers": {{ groups.all }},
