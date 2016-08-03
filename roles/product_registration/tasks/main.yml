@@ -22,6 +22,7 @@
     }'
     body_format: json
     status_code: 200, 201
+    return_content: yes
   register: reg_out
 
 - name: Registration Results
