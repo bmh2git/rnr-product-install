@@ -11,7 +11,7 @@
       "providerAlias": "{{ providerAlias }}",
       "productId": "{{ productId }}",
       "name": "{{ name }}",
-      "bearerToken": {{ b_token }},
+      "bearerToken": "{{ b_token }}",
       "startTime": "{{ start_time }}",
       "endTime": "{{ ansible_date_time.iso8601 }}",
       "success": {{ i_success|lower }},
