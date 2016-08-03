@@ -9,5 +9,5 @@
     - name: set status to a tmp val
       set_fact: i_success="true"
   rescue:
-    - set_fact: i_success="false"
+    - set_fact: i_success="malse"
     - set_fact: i_message="installation failed"
