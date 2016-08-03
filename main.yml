@@ -3,7 +3,7 @@
   gather_facts: no
   pre_tasks:
     - setup:
-    - set_fact: start_time={{ ansible_date_time.iso8601 }}
+    - set_fact: start_time={{ ansible_date_time.iso8601_micro }}
   roles:
     - install_product
     - product_registration
