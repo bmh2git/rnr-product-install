@@ -1,6 +1,6 @@
 - block:
     - name: install product
-      shell: uname -a
+      shell: buname -a
       register: ip_out
 
     - name: output
