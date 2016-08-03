@@ -1,4 +1,6 @@
-- set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
+# - set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
+- set_fact:
+    b_token: "{{test_b_token)}}"
 
 - name: register product
   delegate_to: 127.0.0.1
