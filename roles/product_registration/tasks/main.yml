@@ -1,4 +1,7 @@
 # - set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
+
+- setup:
+  
 - set_fact:
     b_token: "{{test_b_token}}"
 
