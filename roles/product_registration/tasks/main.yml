@@ -1,9 +1,12 @@
-# - set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
-- set_fact:
+- name: Capture Token
+  set_fact: b_token={{lookup('env','CLC_V2_API_TOKEN')}}
+- name: Override Captured Token
+  set_fact:
     b_token: "{{test_b_token}}"
+  when: test_b_token is defined
 
 - setup:
-  
+
 - name: register product
   delegate_to: 127.0.0.1
   ignore_errors: yes
